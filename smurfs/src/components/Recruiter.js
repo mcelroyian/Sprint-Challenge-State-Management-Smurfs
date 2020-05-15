@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { postSmurf } from '../store/actions'
 
-const Recruiter = ({ postSmurf }) => {
+const Recruiter = ({ postSmurf, toEditSmurf }) => {
+    var initialState;
+    (toEditSmurf ? initialState = {...toEditSmurf} : initialState = {name:'',height:'',age:''} )
 
-    const [newSmurf, setNewSmurf] = useState({name:'',height:'',age:''})
+    const [newSmurf, setNewSmurf] = useState(initialState)
 
     const onChange = e => {
         setNewSmurf({
